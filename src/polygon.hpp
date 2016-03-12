@@ -1,3 +1,7 @@
+/*
+ * Husni Munaya / 13513022
+ */
+
 #ifndef POLYGON_H
 #define POLYGON_H
 
@@ -9,6 +13,7 @@
 
 class polygon {
 public:
+	// Constructor
 	polygon();
 	void add_point(int x, int y);
 	void add_point(point p);
@@ -19,7 +24,9 @@ public:
 
 	void draw_stroke(int x = 0, int y = 0, uint32_t color = 0xffffffff);
 	void draw_fill(int x, int y, uint32_t color = 0xffffffff);
+	
 	std::vector<int> scanline(int y);
+	
 	// Transformation
 	void scale(float scale);
 	void rotate(float rotate);
