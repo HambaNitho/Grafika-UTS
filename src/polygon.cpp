@@ -27,14 +27,21 @@ void polygon::set_point(int index, point new_value) {
 }
 
 void polygon::draw_stroke(int x, int y, uint32_t color) {
-	int x_origin = points[0].get_x() + x;
-	int y_origin = points[0].get_y() + y;
+	std::vector<point> new_points = points;
 
-	for (int i = 0; i < points.size(); i++) {
-		point p1 = points[i].move(x, y).scale(scale_factor, x_origin, y_origin).rotate(rotate_factor, x_origin, y_origin);
-		point p2 = points[(i+1) % points.size()].move(x, y).scale(scale_factor, x_origin, y_origin).rotate(rotate_factor, x_origin, y_origin);
 
-		line l(p1, p2);
+	int x_origin = new_points[0].get_x() + x;
+	int y_origin = new_points[0].get_y() + y;
+
+	// Transformation
+	for (int i = 0; i < new_points.size(); i++) {
+		new_points[i] = new_points[i].move(x, y)
+									 .scale(scale_factor, x_origin, y_origin)
+									 .rotate(rotate_factor, x_origin, y_origin);
+	}
+
+	for (int i = 0; i < new_points.size(); i++) {
+		line l(new_points[i], new_points[(i+1) % new_points.size()]);
 		l.draw(color);
 	}
 }
@@ -52,10 +59,25 @@ void polygon::resize(int n_points) {
 }
 
 void polygon::draw_fill(int x, int y, uint32_t color) {
-	std::vector<point> sorted_x_pts = points;
+
+	std::vector<point> new_points = points;
+
+
+	int x_origin = new_points[0].get_x() + x;
+	int y_origin = new_points[0].get_y() + y;
+
+	// Transformation
+	for (int i = 0; i < new_points.size(); i++) {
+		new_points[i] = new_points[i].move(x, y)
+									 .scale(scale_factor, x_origin, y_origin)
+									 .rotate(rotate_factor, x_origin, y_origin);
+	}
+
+
+	std::vector<point> sorted_x_pts = new_points;
 	sort(sorted_x_pts.begin(), sorted_x_pts.end(), point::cmp_x);
 
-	std::vector<point> sorted_y_pts = points;
+	std::vector<point> sorted_y_pts = new_points;
 	sort(sorted_y_pts.begin(), sorted_y_pts.end(), point::cmp_y);
 
 	int leftX = sorted_x_pts[0].get_x();
@@ -70,22 +92,22 @@ void polygon::draw_fill(int x, int y, uint32_t color) {
 		// printf("%d\n", i);
 		
 		std::vector<point> intersect;
-		for (int j = 0; j < points.size(); j++) {
+		for (int j = 0; j < new_points.size(); j++) {
 			// Cek perpotongan
 
-			// printf("%d, %d",points[j].get_x(), points[j].get_y());
-			// printf(" %d, %d\n",points[(j + 1) % points.size()].get_x(), points[(j + 1) % points.size()].get_y());
+			// printf("%d, %d",new_points[j].get_x(), new_points[j].get_y());
+			// printf(" %d, %d\n",new_points[(j + 1) % new_points.size()].get_x(), new_points[(j + 1) % new_points.size()].get_y());
 
 
-			int ymax = std::max(points[j].get_y(), points[(j+1) % points.size()].get_y());
-			int ymin = std::min(points[j].get_y(), points[(j+1) % points.size()].get_y());
+			int ymax = std::max(new_points[j].get_y(), new_points[(j+1) % new_points.size()].get_y());
+			int ymin = std::min(new_points[j].get_y(), new_points[(j+1) % new_points.size()].get_y());
 
-			int xmax = std::max(points[j].get_x(), points[(j+1) % points.size()].get_x());
-			int xmin = std::min(points[j].get_x(), points[(j+1) % points.size()].get_x());
+			int xmax = std::max(new_points[j].get_x(), new_points[(j+1) % new_points.size()].get_x());
+			int xmin = std::min(new_points[j].get_x(), new_points[(j+1) % new_points.size()].get_x());
 
-			if (i >= ymin && i <= ymax){// && i != points[j].get_y()) {
-				float deltaX = points[j].get_x() - points[(j+1)%points.size()].get_x();
-				float deltaY = points[j].get_y() - points[(j+1)%points.size()].get_y();
+			if (i >= ymin && i <= ymax){// && i != new_points[j].get_y()) {
+				float deltaX = new_points[j].get_x() - new_points[(j+1)%new_points.size()].get_x();
+				float deltaY = new_points[j].get_y() - new_points[(j+1)%new_points.size()].get_y();
 				float gradien = 0;
 				
 				if (deltaX != 0 && deltaY != 0) {
