@@ -117,54 +117,46 @@ bool point::cmp_z(const point& p1, const point& p2) {
  * Prespective Projection
  *
  */
-/*
 point point::camera_tranform(point camera_position, double o_x, double o_y, double o_z) {
 
-	std::vector<std::vector<double> > M1(3, std::vector<double>(3));
-	M1[0][0] = 1;
-	M1[0][1] = 0;
-	M1[0][2] = 0;
-	M1[1][0] = 0;
-	M1[1][1] = cos(-o_x);
-	M1[1][2] = -sin(-o_x);
-	M1[2][0] = 0;
-	M1[2][1] = sin(-o_x);
-	M1[2][2] = cos(-o_x);
-	std::vector<std::vector<double> > M2(3, std::vector<double>(3));
-	M2[0][0] = cos(-o_y);
-	M2[0][1] = 0;
-	M2[0][2] = sin(-o_y);
-	M2[1][0] = 0;
-	M2[1][1] = 1;
-	M2[1][2] = 0;
-	M2[2][0] = -sin(-o_y);
-	M2[2][1] = 0;
-	M2[2][2] = cos(-o_y);
-	std::vector<std::vector<double> > M3(3, std::vector<double>(3));
-	M3[0][0] = cos(-o_z);
-	M3[0][1] = -sin(-o_z);
-	M3[0][2] = 0;
-	M3[1][0] = sin(-o_z);
-	M3[1][1] = cos(-o_z);
-	M3[1][2] = 0;
-	M3[2][0] = 0;
-	M3[2][1] = 0;
-	M3[2][2] = 1;
+	double m1[] = {
+		1, 0, 0,
+		0, cos(-o_x), -sin(-o_x),
+		0, sin(-o_x), cos(-o_x)
+	};
 
-	std::vector<std::vector<double> > temp;
-	std::vector<std::vector<double> > input(3, std::vector<double>(1));
-	input[0][0] = (double) x - camera_position.get_x();
-	input[1][0] = (double) y - camera_position.get_y();
-	input[2][0] = (double) z - camera_position.get_z();
+	double m2[] = {
+		cos(-o_y), 0, sin(-o_y),
+		0, 1, 0,
+		-sin(-o_y), 0, cos(-o_y)
+	};
 
-	temp = multiplication::result(multiplication::result(multiplication::result(M1,M2), M3), input);
+	double m3[] = {
+		cos(-o_z), -sin(-o_z), 0,
+		sin(-o_z), cos(-o_z), 0,
+		0, 0, 1
+	};
+
+	double offset[] = {
+		(double) x - camera_position.get_x(),
+		(double) y - camera_position.get_y(),
+		(double) z - camera_position.get_z()
+	};
+
+	matrix M1(3, 3, m1);
+	matrix M2(3, 3, m2);
+	matrix M3(3, 3, m3);
+	matrix Offset(3, 1, offset);
+
+	matrix result_1 = matrix::multiplication(M1,M2);
+	matrix result_2 = matrix::multiplication(result_1, M3);
+	matrix result = matrix::multiplication(result_2, Offset);
 
 	point to_return;
-	to_return.set_x((int) temp[0][0]);
-	to_return.set_y((int) temp[1][0]);
-	to_return.set_z((int) temp[2][0]);
+	to_return.set_x((int) result.at(0, 0));
+	to_return.set_y((int) result.at(1, 0));
+	to_return.set_z((int) result.at(2, 0));
 
 	return to_return;
 
 }
-*/

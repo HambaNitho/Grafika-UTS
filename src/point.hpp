@@ -3,7 +3,7 @@
 
 #include <cmath>
 #include <vector>
-//#include "multiplication.hpp"
+#include "matrix.hpp"
 
 class point {
 public:
@@ -32,7 +32,7 @@ public:
 	point rotate(float angle, int x_origin, int y_origin, int z_origin = 0);
 
 	// Prespective Projection
-	//point camera_tranform(point camera_position, double o_x, double o_y, double o_z);
+	point camera_tranform(point camera_position, double o_x, double o_y, double o_z);
 
 private:
 	int x;
