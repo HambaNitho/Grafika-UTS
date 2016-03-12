@@ -1,3 +1,7 @@
+/*
+ * Husni Munaya / 13513022
+ */
+
 #include "polygon.hpp"
 #include "line.hpp"
 #include <iostream>
@@ -26,19 +30,13 @@ void polygon::draw_stroke(int x, int y, uint32_t color) {
 	int x_origin = points[0].get_x() + x;
 	int y_origin = points[0].get_y() + y;
 
-	for (int i = 0; i < points.size() -1; i++) {
+	for (int i = 0; i < points.size(); i++) {
 		point p1 = points[i].move(x, y).scale(scale_factor, x_origin, y_origin).rotate(rotate_factor, x_origin, y_origin);
-		point p2 = points[i+1].move(x, y).scale(scale_factor, x_origin, y_origin).rotate(rotate_factor, x_origin, y_origin);
+		point p2 = points[(i+1) % points.size()].move(x, y).scale(scale_factor, x_origin, y_origin).rotate(rotate_factor, x_origin, y_origin);
 
 		line l(p1, p2);
 		l.draw(color);
 	}
-
-	point p1 = points[points.size() - 1].move(x, y).scale(scale_factor, x_origin, y_origin).rotate(rotate_factor, x_origin, y_origin);
-	point p2 = points[0].move(x, y).scale(scale_factor, x_origin, y_origin).rotate(rotate_factor, x_origin, y_origin);
-
-	line l(p1, p2);
-	l.draw(color);
 }
 
 std::vector<point> polygon::get_points() {
