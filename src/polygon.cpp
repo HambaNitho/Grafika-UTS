@@ -52,7 +52,6 @@ void polygon::resize(int n_points) {
 }
 
 void polygon::draw_fill(int x, int y, uint32_t color) {
-	// Cari titik paling kiri
 	std::vector<point> sorted_x_pts = points;
 	sort(sorted_x_pts.begin(), sorted_x_pts.end(), point::cmp_x);
 
@@ -118,13 +117,24 @@ void polygon::draw_fill(int x, int y, uint32_t color) {
 		}
 
 		sort(intersect.begin(), intersect.end(), point::cmp_x);
-		if (intersect[0].get_y() != intersect[1].get_y())
-		printf("draw from %d, %d to %d, %d at i = %d\n", intersect[0].get_x(), intersect[0].get_y(), intersect[1].get_x(), intersect[1].get_y(), i);
-		int k = 1;
-		if (intersect[0].get_x() == intersect[1].get_x() && intersect.size() > 2)
-			k++;
-		line l(intersect[0], intersect[k]);
-		l.draw(color);
+
+		for (int k = 0; k < intersect.size() - 1; k++) {
+			if (k % 2 == 0) {
+				line l(intersect[k], intersect[k + 1]);
+				l.draw(color);
+			}
+		}
+		
+		// if (intersect[0].get_y() != intersect[1].get_y())
+		
+		// printf("draw from %d, %d to %d, %d at i = %d\n", intersect[0].get_x(), intersect[0].get_y(), intersect[1].get_x(), intersect[1].get_y(), i);
+		
+		// int k = 1;
+		// if (intersect[0].get_x() == intersect[1].get_x() && intersect.size() > 2)
+		// 	k++;
+		
+		// line l(intersect[0], intersect[k]);
+		// l.draw(color);
 	}
 }
 
