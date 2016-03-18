@@ -5,6 +5,7 @@
 #include <vector>
 #include "point.hpp"
 #include "line.hpp"
+#include "polygon.hpp"
 #include "canvas.hpp"
 
 class bezier {
@@ -26,7 +27,10 @@ public:
 	void recursive_bezier(std::vector<point> points, double t, uint32_t color);
 	//void draw_bezier(uint32_t color);
 	int* getPascalTriangle (int n);
-	void draw_bezier(std::vector<point> points, double ratio, uint32_t color);
+
+	void make_bezier(std::vector<point> points, double ratio);
+	void draw_bezier(uint32_t color);
+	polygon get_polygon();
 
 private:
 	std::vector<point> points;
