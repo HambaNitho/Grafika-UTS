@@ -17,6 +17,14 @@ void line::set_point(point p1, point p2) {
 	this->p2.set_y(p2.get_y());
 }
 
+point line::get_first_point() {
+	return p1;
+}
+
+point line::get_last_point() {
+	return p2;
+}
+
 void line::draw(uint32_t color) {
 	int x1 = this->p1.get_x();
 	int y1 = this->p1.get_y();
@@ -56,29 +64,29 @@ void line::draw(uint32_t color) {
 }
 
 void line::move(int x, int y) {
-	this->p1 = this->p1.move(x,y);
-	this->p2 = this->p2.move(x,y);
+	p1.move(x,y);
+	p2.move(x,y);
 }
 
 void line::scale(int scale) {
 	int dx, dy;
 	
-	dx = abs(this->p1.get_x() - this->p2.get_x());
-	dy = abs(this->p1.get_y() - this->p2.get_y());
+	dx = abs(p1.get_x() - p2.get_x());
+	dy = abs(p1.get_y() - p2.get_y());
 
 	if (p1.get_x() > p2.get_x()) {
-		this->p1 = this->p1.move(dx, 0);
-		this->p2 = this->p2.move(-dx, 0);
+		p1.move(dx, 0);
+		p2.move(-dx, 0);
 	} else {
-		this->p1 = this->p1.move(-dx, 0);
-		this->p2 = this->p2.move(dx, 0);
+		p1.move(-dx, 0);
+		p2.move(dx, 0);
 	}
 
 	if (p1.get_y() > p2.get_y()) {
-		this->p1 = this->p1.move(0, dy);
-		this->p2 = this->p2.move(0, -dy);
+		p1.move(0, dy);
+		p2.move(0, -dy);
 	} else {
-		this->p1 = this->p1.move(0, -dy);
-		this->p2 = this->p2.move(0, dy);
+		p1.move(0, -dy);
+		p2.move(0, dy);
 	}
 }
