@@ -2,6 +2,7 @@
 #define GL_H
 
 #include "canvas.hpp"
+#include "font.hpp"
 #include "color.hpp"
 #include "line.hpp"
 #include "polygon.hpp"
