@@ -9,6 +9,7 @@
 #include "point.hpp"
 #include "fill.hpp"
 #include "bezier.hpp"
+#include "view.hpp"
 #include <list>
 
 #endif

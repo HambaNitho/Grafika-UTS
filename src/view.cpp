@@ -45,6 +45,18 @@ point view::get_position() const {
 	return position;
 }
 
+point view::get_clip_pos() const {
+	return clip_position;
+}
+
+int view::get_clip_height() const {
+	return window_height;
+}
+
+int view::get_clip_width() const {
+	return window_width;
+}
+
 void view::set_width(int width) {
 	this->width = width;
 }
@@ -153,20 +165,6 @@ point view::clipping(line Line, int l, int r, int b, int t, int idx) {
 }
 
 void view::draw(polygon p) {
-
-	// Draw map
-	int x1 = position.get_x();
-	int y1 = position.get_y();
-
-	int x2 = x1 + width;
-	int y2 = y1 + height;
-
-	line l1(x1, y1, x2, y1);
-	line l2(x2, y1, x2, y2);
-	line l3(x2, y2, x1, y2);
-	line l4(x1, y2, x1, y1);
-
-	l1.draw(); l2.draw(); l3.draw(); l4.draw();
 	
 	// Draw clipped area
 	int cx1 = clip_position.get_x();
@@ -263,8 +261,10 @@ void view::draw(polygon p) {
 }
 
 void view::move_clip(int delta_x, int delta_y) {
-	clip_position.set_x(clip_position.get_x() + delta_x);
-	clip_position.set_y(clip_position.get_y() + delta_y);
+	if (clip_position.get_x() + delta_x < clip_position.get_x() + window_width)
+		clip_position.set_x(clip_position.get_x() + delta_x);
+	if (clip_position.get_y() + delta_y < clip_position.get_y() + window_height)
+		clip_position.set_y(clip_position.get_y() + delta_y);
 }
 
 void view::zoom(float scale) {

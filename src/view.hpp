@@ -17,6 +17,9 @@ public:
 	int get_height() const;
 	
 	point get_position() const;
+	point get_clip_pos() const;
+	int get_clip_height() const;
+	int get_clip_width() const;
 	
 	void set_width(int width);
 	void set_height(int height);
