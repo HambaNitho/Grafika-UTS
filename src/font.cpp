@@ -26,7 +26,15 @@ void font::draw_block(int x, int y, uint32_t color) {
 }
 
 void font::draw_char(char c, int x, int y, uint32_t color) {
-	int coordinate[7][5];
+	int coordinate[7][5] = {
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0}
+	};
 
 	int coordinateA[7][5] = {
 	    {0, 1, 1, 1, 0},
@@ -390,6 +398,7 @@ void font::draw_char(char c, int x, int y, uint32_t color) {
 	    {0, 0, 0, 0, 1},
 	    {1, 1, 1, 1, 1}
 	};
+
 
 
 	switch(c) {
