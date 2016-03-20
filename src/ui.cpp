@@ -5,11 +5,29 @@
 #include <linux/fb.h>
 #include <sys/mman.h>
 #include <sys/ioctl.h>
+#include <vector>
+#include "map.hpp"
+
+using namespace std;
 
 int screen_width = canvas::get_instance()->get_var_info().xres - 5;
 int screen_height = canvas::get_instance()->get_var_info().yres - 5;
 int vertical_split_xres = (screen_width / 4) * 3;
 int margin_default = 10;
+
+// Minimap
+int minimap_top_left_x = vertical_split_xres + margin_default;
+int minimap_top_left_y = (10 * margin_default);
+int minimap_height = screen_height / 3;
+
+// Instruction
+int instruction_top_left_x = vertical_split_xres + (10 * margin_default);
+int instruction_top_left_y = (screen_height / 4) * 2 - (5 * margin_default);
+
+// Legend
+int legend_top_left_x = vertical_split_xres + margin_default;
+int legend_top_left_y = (screen_height / 4) * 3 - margin_default;
+int legend_height = screen_height / 4;
 
 void draw_frame();
 
@@ -24,17 +42,23 @@ int main() {
   point clipping_pos(vertical_split_xres + margin_default, 10 * margin_default);
   view v(screen_height, vertical_split_xres, view_pos, clipping_pos, 0.1);
 
-  polygon temp;
-  temp.add_point(vertical_split_xres + margin_default + 20, 10 * margin_default + 20);
-  temp.add_point(vertical_split_xres + margin_default + 40, 10 * margin_default + 40);
+  map m;
+  m.set_scale(2.5);
+  m.draw_map(minimap_top_left_x, minimap_top_left_y);
+
+  vector<polygon> maps = m.get_map_polygons();
 
   while (true) {
-    temp.draw_stroke();
     draw_frame();
-    v.draw(temp);
+
+    for (int i = 0; i < maps.size(); i++) {
+      maps[i].draw_stroke();
+      v.draw(maps[i]);
+    }
+
     canvas::get_instance()->render();
 
-    c = getch();   
+    c = getch();
     switch(c) {
       case 110:       // key m
         v.zoom(-0.01);
@@ -48,7 +72,7 @@ int main() {
         break;
       case 66:       // key down
         if (v.get_clip_pos().get_y() + v.get_clip_height() + 4 < (10 * margin_default)+(screen_height / 3))
-          v.move_clip(0, 4);     
+          v.move_clip(0, 4);
         break;
       case 67:       // key right
         if (v.get_clip_pos().get_x() + v.get_clip_width() + 4 < screen_width - margin_default)
@@ -72,19 +96,6 @@ int main() {
 }
 
 void draw_frame() {
-  // Minimap
-  int minimap_top_left_x = vertical_split_xres + margin_default;
-  int minimap_top_left_y = (10 * margin_default);
-  int minimap_height = screen_height / 3;
-
-  // Instruction
-  int instruction_top_left_x = vertical_split_xres + (10 * margin_default);
-  int instruction_top_left_y = (screen_height / 4) * 2 - (5 * margin_default);
-
-  // Legend
-  int legend_top_left_x = vertical_split_xres + margin_default;
-  int legend_top_left_y = (screen_height / 4) * 3 - margin_default;
-  int legend_height = screen_height / 4;
 
   polygon outer_frame;
   outer_frame.add_point(0, 0);
