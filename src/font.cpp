@@ -26,7 +26,15 @@ void font::draw_block(int x, int y, uint32_t color) {
 }
 
 void font::draw_char(char c, int x, int y, uint32_t color) {
-	int coordinate[7][5];
+	int coordinate[7][5] = {
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0}
+	};
 
 	int coordinateA[7][5] = {
 	    {0, 1, 1, 1, 0},
@@ -97,7 +105,7 @@ void font::draw_char(char c, int x, int y, uint32_t color) {
 	    {1, 0, 0, 0, 1},
 	    {1, 1, 1, 1, 1}
 	};
-	
+
 	int coordinateH[7][5] = {
 	    {1, 0, 0, 0, 1},
 	    {1, 0, 0, 0, 1},
@@ -148,7 +156,7 @@ void font::draw_char(char c, int x, int y, uint32_t color) {
 	    {1, 0, 0, 0, 0},
 	    {1, 1, 1, 1, 1}
 	};
-	
+
 	int coordinateM[7][5] = {
 	    {1, 0, 0, 0, 1},
 	    {1, 1, 0, 1, 1},
@@ -260,7 +268,7 @@ void font::draw_char(char c, int x, int y, uint32_t color) {
 	    {1, 1, 0, 1, 1},
 	    {1, 0, 0, 0, 1}
 	};
-	
+
 	int coordinateX[7][5] = {
 	    {1, 0, 0, 0, 1},
 	    {1, 0, 0, 0, 1},
@@ -392,6 +400,27 @@ void font::draw_char(char c, int x, int y, uint32_t color) {
 	};
 
 
+	int coordinatePlus[7][5] = {
+		{0, 0, 1, 0, 0},
+		{0, 0, 1, 0, 0},
+		{0, 0, 1, 0, 0},
+		{1, 1, 1, 1, 1},
+		{0, 0, 1, 0, 0},
+		{0, 0, 1, 0, 0},
+		{0, 0, 1, 0, 0}
+	};
+
+	int coordinateMin[7][5] = {
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{1, 1, 1, 1, 1},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0}
+	};
+
+
 	switch(c) {
 	    case 'A':
 	        copy_matrix(coordinateA, coordinate);
@@ -459,47 +488,53 @@ void font::draw_char(char c, int x, int y, uint32_t color) {
 	    case 'V':
 	        copy_matrix(coordinateV, coordinate);
 	        break;
-	    case 'W': 
+	    case 'W':
 	        copy_matrix(coordinateW, coordinate);
 	        break;
 	    case 'X':
 	        copy_matrix(coordinateX, coordinate);
 	        break;
-	    case 'Y': 
+	    case 'Y':
 	        copy_matrix(coordinateY, coordinate);
 	        break;
-	    case 'Z': 
+	    case 'Z':
 	        copy_matrix(coordinateZ, coordinate);
 	        break;
-	    case '0': 
+	    case '0':
 	        copy_matrix(coordinate0, coordinate);
 	        break;
-	    case '1': 
+	    case '1':
 	        copy_matrix(coordinate1, coordinate);
 	        break;
-	    case '2': 
+	    case '2':
 	        copy_matrix(coordinate2, coordinate);
 	        break;
-	    case '3': 
+	    case '3':
 	        copy_matrix(coordinate3, coordinate);
 	        break;
-	    case '4': 
+	    case '4':
 	        copy_matrix(coordinate4, coordinate);
 	        break;
-	    case '5': 
+	    case '5':
 	        copy_matrix(coordinate5, coordinate);
 	        break;
-	    case '6': 
+	    case '6':
 	        copy_matrix(coordinate6, coordinate);
 	        break;
-	    case '7': 
+	    case '7':
 	        copy_matrix(coordinate7, coordinate);
 	        break;
-	    case '8': 
+	    case '8':
 	        copy_matrix(coordinate8, coordinate);
 	        break;
-	    case '9': 
+	    case '9':
 	        copy_matrix(coordinate9, coordinate);
+	        break;
+	    case '+':
+	        copy_matrix(coordinatePlus, coordinate);
+	        break;
+	    case '-':
+	        copy_matrix(coordinateMin, coordinate);
 	        break;
 
 	}
@@ -518,6 +553,3 @@ void font::draw_string(std::string s, int x, int y, uint32_t color) {
 		draw_char(s[i], x + i*(font_size* (font_width + 1)), y);
 	}
 }
-
-
-
