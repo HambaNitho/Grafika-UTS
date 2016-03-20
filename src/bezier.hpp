@@ -24,7 +24,7 @@ public:
 	void delete_point(int position);
 	void move_point(int position, int delta_x = 0, int delta_y = 0, int delta_z = 0);
 
-	void recursive_bezier(std::vector<point> points, double t, uint32_t color);
+	void recursive_bezier(std::vector<point> points, double t);
 	//void draw_bezier(uint32_t color);
 	int* getPascalTriangle (int n);
 
