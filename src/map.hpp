@@ -22,9 +22,11 @@
 	 	void map_add_point_bezier(std::string filename, std::vector<point> &p);
 	 	void draw_map();
 	 	void set_scale(int n_scale);
+	 	std::vector<polygon> get_map_polygons();
 
 	 private:
 	 	int scale;
+	 	std::vector<polygon> map_polygons;
 
  };
 
