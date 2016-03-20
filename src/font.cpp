@@ -400,6 +400,26 @@ void font::draw_char(char c, int x, int y, uint32_t color) {
 	};
 
 
+	int coordinatePlus[7][5] = {
+		{0, 0, 1, 0, 0},
+		{0, 0, 1, 0, 0},
+		{0, 0, 1, 0, 0},
+		{1, 1, 1, 1, 1},
+		{0, 0, 1, 0, 0},
+		{0, 0, 1, 0, 0},
+		{0, 0, 1, 0, 0}
+	}
+
+	int coordinateMin[7][5] = {
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{1, 1, 1, 1, 1},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0}
+	}
+
 
 	switch(c) {
 	    case 'A':
@@ -509,6 +529,12 @@ void font::draw_char(char c, int x, int y, uint32_t color) {
 	        break;
 	    case '9': 
 	        copy_matrix(coordinate9, coordinate);
+	        break;
+	    case '+': 
+	        copy_matrix(coordinatePlus, coordinate);
+	        break;
+	    case '-': 
+	        copy_matrix(coordinateMin, coordinate);
 	        break;
 
 	}
