@@ -127,28 +127,28 @@ void draw_frame() {
   arrow.add_point(3, 7);
   arrow.add_point(0, 7);
 
-  arrow.scale(1.4);
+  arrow.scale(0.9);
   arrow.draw_stroke(instruction_top_left_x - (2 * margin_default), instruction_top_left_y);
   arrow.rotate(3.14);
-  arrow.draw_stroke(instruction_top_left_x - (2 * margin_default), instruction_top_left_y + (minimap_height / 16) + (3 * margin_default));
+  arrow.draw_stroke(instruction_top_left_x - (2 * margin_default), instruction_top_left_y + (minimap_height / 24) + (3 * margin_default));
   arrow.rotate(-3.14 / 2);
-  arrow.draw_stroke(instruction_top_left_x - margin_default, instruction_top_left_y + (2 * (minimap_height / 16)) + (3 * margin_default));
+  arrow.draw_stroke(instruction_top_left_x - margin_default, instruction_top_left_y + (2 * (minimap_height / 24)) + (3 * margin_default));
   arrow.rotate(3.14 / 2);
-  arrow.draw_stroke(instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (3 * (minimap_height / 16)) + (4 * margin_default));
+  arrow.draw_stroke(instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (3 * (minimap_height / 24)) + (4 * margin_default));
 
-  f.set_size((minimap_height / 16) / 7);
+  f.set_size((minimap_height / 24) / 7);
   f.draw_string("SCROLL UP", instruction_top_left_x, instruction_top_left_y);
-  f.draw_string("SCROLL DOWN", instruction_top_left_x, instruction_top_left_y + (minimap_height / 16) + margin_default);
-  f.draw_string("SCROLL RIGHT", instruction_top_left_x, instruction_top_left_y +  (2 * (minimap_height / 16)) + (2 * margin_default));
-  f.draw_string("SCROLL LEFT", instruction_top_left_x, instruction_top_left_y + (3 * (minimap_height / 16)) + (3 * margin_default));
-  f.draw_char('N', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (4 * (minimap_height / 16)) + (4 * margin_default));
-  f.draw_string("ZOOM IN", instruction_top_left_x, instruction_top_left_y + (4 * (minimap_height / 16)) + (4 * margin_default));
-  f.draw_char('M', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (5 * (minimap_height / 16)) + (5 * margin_default));
-  f.draw_string("ZOOM OUT", instruction_top_left_x, instruction_top_left_y + (5 * (minimap_height / 16)) + (5 * margin_default));
-  f.draw_char('J', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (6 * (minimap_height / 16)) + (6 * margin_default));
-  f.draw_string("ROTATE LEFT", instruction_top_left_x, instruction_top_left_y + (6 * (minimap_height / 16)) + (6 * margin_default));
-  f.draw_char('K', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (7 * (minimap_height / 16)) + (7 * margin_default));
-  f.draw_string("ROTATE RIGHT", instruction_top_left_x, instruction_top_left_y + (7 * (minimap_height / 16)) + (7 * margin_default));
+  f.draw_string("SCROLL DOWN", instruction_top_left_x, instruction_top_left_y + (minimap_height / 24) + margin_default);
+  f.draw_string("SCROLL RIGHT", instruction_top_left_x, instruction_top_left_y +  (2 * (minimap_height / 24)) + (2 * margin_default));
+  f.draw_string("SCROLL LEFT", instruction_top_left_x, instruction_top_left_y + (3 * (minimap_height / 24)) + (3 * margin_default));
+  f.draw_char('N', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (4 * (minimap_height / 24)) + (4 * margin_default));
+  f.draw_string("ZOOM IN", instruction_top_left_x, instruction_top_left_y + (4 * (minimap_height / 24)) + (4 * margin_default));
+  f.draw_char('M', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (5 * (minimap_height / 24)) + (5 * margin_default));
+  f.draw_string("ZOOM OUT", instruction_top_left_x, instruction_top_left_y + (5 * (minimap_height / 24)) + (5 * margin_default));
+  f.draw_char('J', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (6 * (minimap_height / 24)) + (6 * margin_default));
+  f.draw_string("ROTATE LEFT", instruction_top_left_x, instruction_top_left_y + (6 * (minimap_height / 24)) + (6 * margin_default));
+  f.draw_char('K', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (7 * (minimap_height / 24)) + (7 * margin_default));
+  f.draw_string("ROTATE RIGHT", instruction_top_left_x, instruction_top_left_y + (7 * (minimap_height / 24)) + (7 * margin_default));
 
 
   polygon legend_frame;
