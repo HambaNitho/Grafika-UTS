@@ -77,14 +77,14 @@ void draw_frame() {
 		}
 	}
 
-	f.set_size((legend_height / 14) / 7);
+	f.set_size((legend_height / 12) / 7);
 	f.draw_string("1000M", legend_top_left_position.get_x() + 40 + block_size + margin_default,
-    legend_top_left_position.get_y() + (2 * block_size) + (3 * margin_default));
+    legend_top_left_position.get_y() + (2 * block_size) + (2 * margin_default));
 	f.draw_string("500M", legend_top_left_position.get_x() + 40 + block_size + margin_default,
-    legend_top_left_position.get_y() + (3 * block_size) + (3 * margin_default));
+    legend_top_left_position.get_y() + (3 * block_size) + (2 * margin_default));
 	f.draw_string("100M", legend_top_left_position.get_x() + 40 + block_size + margin_default,
-    legend_top_left_position.get_y() + (4 * block_size) + (3 * margin_default));
+    legend_top_left_position.get_y() + (4 * block_size) + (2 * margin_default));
 	f.draw_string("0M", legend_top_left_position.get_x() + 40 + block_size + margin_default,
-    legend_top_left_position.get_y() + (5 * block_size) + (3 * margin_default));
+    legend_top_left_position.get_y() + (5 * block_size) + (2 * margin_default));
 
 }
