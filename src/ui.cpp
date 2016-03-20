@@ -69,15 +69,15 @@ void draw_frame() {
 		rect.add_point(legend_top_left_position.get_x() + 40, legend_top_left_position.get_y() + (i + 3) * block_size);
 		rect.draw_stroke();
 		switch (i) {
-			case 0: rect.draw_fill(1, 1, 0x64A211); break;
-			case 1: rect.draw_fill(1, 1, 0x8CB54F); break;
-			case 2: rect.draw_fill(1, 1, 0xDFE53E); break;
-			case 3: rect.draw_fill(1, 1, 0xDEB946); break;
+			case 0: rect.draw_fill(1, 1, 0xDEB946); break;
+      case 1: rect.draw_fill(1, 1, 0xDFE53E); break;
+			case 2: rect.draw_fill(1, 1, 0x8CB54F); break;
+			case 3: rect.draw_fill(1, 1, 0x64A211); break;
 			case 4: rect.draw_fill(1, 1, 0x0A32FF); break;
 		}
 	}
 
-	f.set_size((legend_height / 10) / 7);
+	f.set_size((legend_height / 12) / 7);
 	f.draw_string("1000M", legend_top_left_position.get_x() + 40 + block_size + margin_default,
     legend_top_left_position.get_y() + (2 * block_size) + (2 * margin_default));
 	f.draw_string("500M", legend_top_left_position.get_x() + 40 + block_size + margin_default,
