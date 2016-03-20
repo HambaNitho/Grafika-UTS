@@ -6,8 +6,83 @@ map::map(){
 
 void map::draw_map(){
 
-	polygon bali, nusaPenida1, nusaPenida2, nusaPenida3, coba;
+	polygon bali, nusaPenida1, nusaPenida2, nusaPenida3, coba, kuning;
     int size = scale;
+
+    kuning.add_point(31*size, 26*size);
+    kuning.add_point(32*size, 26*size);
+    kuning.add_point(33*size, 27*size);
+    kuning.add_point(34*size, 27*size);
+    kuning.add_point(35*size, 28*size);
+    kuning.add_point(37*size, 26*size);
+    kuning.add_point(39*size, 25*size);
+    kuning.add_point(39*size, 26*size);
+    kuning.add_point(40*size, 27*size);
+    kuning.add_point(40*size, 29*size);
+
+    kuning.add_point(42*size, 31*size);
+    kuning.add_point(44*size, 29*size);
+    kuning.add_point(44*size, 27*size);
+    kuning.add_point(45*size, 26*size);
+    kuning.add_point(46*size, 26*size);
+    kuning.add_point(50*size, 30*size);
+    kuning.add_point(50*size, 31*size);
+    kuning.add_point(56*size, 35*size);
+    kuning.add_point(58*size, 35*size);
+    kuning.add_point(60*size, 33*size);
+
+    kuning.add_point(62*size, 33*size);
+    kuning.add_point(71*size, 38*size);
+    kuning.add_point(74*size, 38*size);
+    kuning.add_point(78*size, 40*size);
+    kuning.add_point(79*size, 40*size);
+    kuning.add_point(82*size, 43*size);
+    kuning.add_point(88*size, 43*size);
+    kuning.add_point(89*size, 42*size);
+    kuning.add_point(93*size, 39*size);
+    kuning.add_point(93*size, 37*size);
+
+    kuning.add_point(89*size, 33*size);
+    kuning.add_point(91*size, 29*size);
+    kuning.add_point(97*size, 29*size);
+    kuning.add_point(98*size, 28*size);
+    kuning.add_point(100*size, 28*size);
+    kuning.add_point(101*size, 27*size);
+    kuning.add_point(105*size, 27*size);
+    kuning.add_point(106*size, 26*size);
+    kuning.add_point(111*size, 26*size);
+    kuning.add_point(119*size, 21*size);
+
+    kuning.add_point(119*size, 20*size);
+    kuning.add_point(122*size, 17*size);
+    kuning.add_point(127*size, 17*size);
+    kuning.add_point(131*size, 20*size);
+    kuning.add_point(132*size, 20*size);
+    kuning.add_point(136*size, 23*size);
+    kuning.add_point(142*size, 23*size);
+    kuning.add_point(147*size, 26*size);
+    kuning.add_point(148*size, 26*size);
+    kuning.add_point(151*size, 29*size);
+
+    kuning.add_point(151*size, 30*size);
+    kuning.add_point(153*size, 32*size);
+    kuning.add_point(153*size, 34*size);
+    kuning.add_point(162*size, 43*size);
+    kuning.add_point(167*size, 43*size);
+    kuning.add_point(172*size, 48*size);
+    kuning.add_point(172*size, 57*size);
+    kuning.add_point(165*size, 64*size);
+    kuning.add_point(165*size, 67*size);
+    kuning.add_point(165*size, 67*size);
+    kuning.add_point(164*size, 68*size);
+    kuning.add_point(163*size, 68*size);
+    kuning.add_point(159*size, 64*size);
+    kuning.add_point(153*size, 64*size);
+
+
+
+
+    kuning.draw_stroke();
 
     bali.add_point(10*size,14*size);
     bali.add_point(8*size,16*size);
@@ -377,6 +452,7 @@ void map::draw_map(){
 	coba.add_point(66*size,34*size);
 	coba.add_point(65*size,34*size);
 	coba.add_point(62*size,31*size);
+
 	coba.add_point(61*size,31*size);
 	coba.add_point(59*size,33*size);
 	coba.add_point(58*size,33*size);
@@ -407,7 +483,7 @@ void map::draw_map(){
 }
 
 void map::draw_contour(){
-	std::vector<point> points;
+/*	std::vector<point> points;
 	int size = scale;
 
 	points.push_back(point(0*size,0*size));
@@ -424,7 +500,7 @@ void map::draw_contour(){
 	b.draw_bezier(0xffffffff);
 	
 
-	canvas::get_instance()->render();
+	canvas::get_instance()->render();*/
 }
 
 void map::set_scale(int n_scale){
