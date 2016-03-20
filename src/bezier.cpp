@@ -74,7 +74,7 @@ void bezier::recursive_bezier(std::vector<point> points, double t) {
 			newpoints.push_back(point(x, y));
 			//b_points.push_back(point(x, y));
 		}
-		recursive_bezier(newpoints, t, color);
+		recursive_bezier(newpoints, t);
 	}
 }
 
@@ -93,7 +93,7 @@ void bezier::make_bezier(std::vector<point> points, double ratio)
 	b_points.push_back(points[0]);
 	
 	while (t <= 1) {
-		recursive_bezier(points, t, color);
+		recursive_bezier(points, t);
 		t += ratio;
 	}
 	
