@@ -267,9 +267,14 @@ void view::move_clip(int delta_x, int delta_y) {
 		clip_position.set_y(clip_position.get_y() + delta_y);
 }
 
-void view::zoom(float scale) {
-	this->window_height += height_ratio*scale;
-	this->window_width += width_ratio*scale;
+void view::zoom(float scale, int bottom_bound, int left_bound) {
+	if (this->window_height + height_ratio*scale > 0 && 
+		this->window_width + width_ratio*scale > 0 &&
+		clip_position.get_y() + this->window_height + height_ratio*scale < bottom_bound &&
+		clip_position.get_x() + this->window_width + width_ratio*scale < left_bound) {
+			this->window_height += height_ratio*scale;
+			this->window_width += width_ratio*scale;
+		}
 }
 
 void view::set_ratio() {

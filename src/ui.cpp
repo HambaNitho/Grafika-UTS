@@ -43,7 +43,7 @@ int main() {
   view v(screen_height, vertical_split_xres, view_pos, clipping_pos, 0.1);
 
   map m;
-  m.set_scale(2.5);
+  m.set_scale(1.5);
   m.draw_map(minimap_top_left_x, minimap_top_left_y);
 
   vector<polygon> maps = m.get_map_polygons();
@@ -51,20 +51,28 @@ int main() {
   while (true) {
     draw_frame();
 
+    std::list<polygon> polygons;
+    std::list<uint32_t> colors;
+
     for (int i = 0; i < maps.size(); i++) {
       maps[i].draw_stroke();
       v.draw(maps[i]);
+      polygons.push_back(maps[i]);
+      colors.push_back(0xDEB946);
     }
+
+    fillo fl(polygons, colors);
+    fl.fill_polygons();
 
     canvas::get_instance()->render();
 
     c = getch();
     switch(c) {
       case 110:       // key m
-        v.zoom(-0.01);
+        v.zoom(-0.01, (10 * margin_default)+(screen_height / 3), screen_width - margin_default );
         break;
-      case 109:       // key n
-        v.zoom(0.01);
+      case 109:       // key m
+        v.zoom(0.01, (10 * margin_default)+(screen_height / 3), screen_width - margin_default );
         break;
       case 65:       // key up
         if (v.get_clip_pos().get_y() > (10 * margin_default))

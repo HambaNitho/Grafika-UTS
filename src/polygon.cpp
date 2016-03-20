@@ -206,8 +206,15 @@ std::vector<int> polygon::scanline(int y) {
 
 		} else {
 			if (i == ymax || i == ymin){
-				intersect.push_back(intersect_x);
-				intersect.push_back(intersect_x);
+				if (i == points[j].get_y()){
+					intersect.push_back(points[j].get_x());
+					intersect.push_back(points[j].get_x());
+				} else{
+					intersect.push_back(points[j+1].get_x());
+					intersect.push_back(points[j+1].get_x());
+
+				}
+
 			}
 			// printf("tidak berpotongan\n");
 		}
