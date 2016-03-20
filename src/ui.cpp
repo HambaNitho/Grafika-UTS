@@ -51,10 +51,18 @@ int main() {
   while (true) {
     draw_frame();
 
+    std::list<polygon> polygons;
+    std::list<uint32_t> colors;
+
     for (int i = 0; i < maps.size(); i++) {
       maps[i].draw_stroke();
       v.draw(maps[i]);
+      polygons.push_back(maps[i]);
+      colors.push_back(0xDEB946);
     }
+
+    fillo fl(polygons, colors);
+    fl.fill_polygons();
 
     canvas::get_instance()->render();
 
