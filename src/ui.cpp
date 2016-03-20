@@ -24,7 +24,7 @@ void draw_frame() {
 
   // Instruction
   int instruction_top_left_x = vertical_split_xres + (10 * margin_default);
-  int instruction_top_left_y = (screen_height / 4) * 2 + margin_default;
+  int instruction_top_left_y = (screen_height / 4) * 2 - (5 * margin_default);
 
   // Legend
   int legend_top_left_x = vertical_split_xres + margin_default;
@@ -75,6 +75,15 @@ void draw_frame() {
   f.draw_string("SCROLL DOWN", instruction_top_left_x, instruction_top_left_y + (minimap_height / 16) + margin_default);
   f.draw_string("SCROLL RIGHT", instruction_top_left_x, instruction_top_left_y +  (2 * (minimap_height / 16)) + (2 * margin_default));
   f.draw_string("SCROLL LEFT", instruction_top_left_x, instruction_top_left_y + (3 * (minimap_height / 16)) + (3 * margin_default));
+  f.draw_char('N', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (4 * (minimap_height / 16)) + (4 * margin_default));
+  f.draw_string("ZOOM IN", instruction_top_left_x, instruction_top_left_y + (4 * (minimap_height / 16)) + (4 * margin_default));
+  f.draw_char('M', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (5 * (minimap_height / 16)) + (5 * margin_default));
+  f.draw_string("ZOOM OUT", instruction_top_left_x, instruction_top_left_y + (5 * (minimap_height / 16)) + (5 * margin_default));
+  f.draw_char('J', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (6 * (minimap_height / 16)) + (6 * margin_default));
+  f.draw_string("ROTATE LEFT", instruction_top_left_x, instruction_top_left_y + (6 * (minimap_height / 16)) + (6 * margin_default));
+  f.draw_char('K', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (7 * (minimap_height / 16)) + (7 * margin_default));
+  f.draw_string("ROTATE RIGHT", instruction_top_left_x, instruction_top_left_y + (7 * (minimap_height / 16)) + (7 * margin_default));
+
 
   polygon legend_frame;
   legend_frame.add_point(legend_top_left_x, legend_top_left_y);
