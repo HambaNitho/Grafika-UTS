@@ -205,6 +205,10 @@ std::vector<int> polygon::scanline(int y) {
 			intersect.push_back(intersect_x);
 
 		} else {
+			if (i == ymax || i == ymin){
+				intersect.push_back(intersect_x);
+				intersect.push_back(intersect_x);
+			}
 			// printf("tidak berpotongan\n");
 		}
 	}
