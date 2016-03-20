@@ -43,7 +43,7 @@ int main() {
   view v(screen_height, vertical_split_xres, view_pos, clipping_pos, 0.1);
 
   map m;
-  m.set_scale(1.5);
+  m.set_scale(2.5);
   m.draw_map(minimap_top_left_x, minimap_top_left_y);
 
   vector<polygon> maps = m.get_map_polygons();

@@ -28,6 +28,7 @@ public:
 	void draw_stroke(int x = 0, int y = 0, uint32_t color = 0xffffffff);
 	
 	void draw_fill(int x = 0 , int y = 0, uint32_t color = 0xffffffff);
+	void draw_fill2(int x, int y, uint32_t color);
 	
 	std::vector<int> scanline(int y);
 	

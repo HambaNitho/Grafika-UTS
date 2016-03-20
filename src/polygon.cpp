@@ -159,6 +159,76 @@ void polygon::draw_fill(int x, int y, uint32_t color) {
 		// l.draw(color);
 	}
 }
+/*
+std::vector<int> polygon::scanline(int y) {
+	
+	int i = y;
+	std::vector<int> intersect;
+	for (int j = 0; j < points.size(); j++) {
+		// Cek perpotongan
+
+		// printf("%d, %d",points[j].get_x(), points[j].get_y());
+		// printf(" %d, %d\n",points[(j + 1) % points.size()].get_x(), points[(j + 1) % points.size()].get_y());
+
+
+		int ymax = std::max(points[j].get_y(), points[(j+1) % points.size()].get_y());
+		int ymin = std::min(points[j].get_y(), points[(j+1) % points.size()].get_y());
+
+		int xmax = std::max(points[j].get_x(), points[(j+1) % points.size()].get_x());
+		int xmin = std::min(points[j].get_x(), points[(j+1) % points.size()].get_x());
+
+		if (i >= ymin && i <= ymax){// && i != points[j].get_y()) {
+			float deltaX = points[j].get_x() - points[(j+1)%points.size()].get_x();
+			float deltaY = points[j].get_y() - points[(j+1)%points.size()].get_y();
+			float gradien = 0;
+			
+			if (deltaX != 0 && deltaY != 0) {
+				gradien = deltaX/deltaY;	
+			}
+
+
+			int intersect_y = i;
+			int intersect_x;
+
+
+			if (deltaX == 0) {
+				intersect_x = xmin;
+			} else {
+				if (gradien < 0) {
+					intersect_x = ((ymax - i) * (xmax - xmin) / (ymax - ymin)) + xmin;
+				} else if (gradien > 0) {
+					intersect_x = ((i - ymin) * (xmax - xmin) / (ymax - ymin)) + xmin;
+				}
+			}
+
+			// printf("berpotongan di %d, %d\n", intersect_x, intersect_y);
+			intersect.push_back(intersect_x);
+
+		} else {
+			/*if (i == ymax || i == ymin){
+				if (i == points[j].get_y()){
+					intersect.push_back(points[j].get_x());
+					intersect.push_back(points[j].get_x());
+				} else{
+					intersect.push_back(points[j+1].get_x());
+					intersect.push_back(points[j+1].get_x());
+
+				}
+
+			}*/
+			// printf("tidak berpotongan\n");
+		/*}
+	}
+
+	sort(intersect.begin(), intersect.end());
+	
+	int k = 1;
+	if (intersect[0] == intersect[1] && intersect.size() > 2)
+		k++;
+	intersect[1] = intersect[k];
+	return intersect;
+}
+*/
 
 std::vector<int> polygon::scanline(int y) {
 	
@@ -205,17 +275,6 @@ std::vector<int> polygon::scanline(int y) {
 			intersect.push_back(intersect_x);
 
 		} else {
-			if (i == ymax || i == ymin){
-				if (i == points[j].get_y()){
-					intersect.push_back(points[j].get_x());
-					intersect.push_back(points[j].get_x());
-				} else{
-					intersect.push_back(points[j+1].get_x());
-					intersect.push_back(points[j+1].get_x());
-
-				}
-
-			}
 			// printf("tidak berpotongan\n");
 		}
 	}
