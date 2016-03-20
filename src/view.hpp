@@ -29,7 +29,7 @@ public:
 	void move_clip(int delta_x, int delta_y);
 
 	// Change scale of clip
-	void zoom(float scale);
+	void zoom(float scale, int bottom_bound, int left_bound);
 
 	// Clipping
 	point clipping(line Line, int l, int r, int b, int t, int idx);

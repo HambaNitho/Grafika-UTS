@@ -61,10 +61,10 @@ int main() {
     c = getch();
     switch(c) {
       case 110:       // key m
-        v.zoom(-0.01);
+        v.zoom(-0.01, (10 * margin_default)+(screen_height / 3), screen_width - margin_default );
         break;
-      case 109:       // key n
-        v.zoom(0.01);
+      case 109:       // key m
+        v.zoom(0.01, (10 * margin_default)+(screen_height / 3), screen_width - margin_default );
         break;
       case 65:       // key up
         if (v.get_clip_pos().get_y() > (10 * margin_default))
