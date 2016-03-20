@@ -38,7 +38,7 @@ void draw_frame() {
   vertical_split_line.draw();
 
   font f;
-  f.set_size(10);
+  f.set_size((minimap_height / 5) / 7);
   f.draw_string("MINIMAP", vertical_split_xres + margin_default, margin_default);
 
   polygon minimap_frame;
@@ -57,15 +57,16 @@ void draw_frame() {
 
   point legend_top_left_position(legend_top_left_x + margin_default, legend_top_left_y + margin_default);
 
-	f.set_size(5);
+	f.set_size((legend_height / 6) / 7);
 	f.draw_string("LEGENDA", legend_top_left_position.get_x(), legend_top_left_position.get_y());
 
+  int block_size = legend_height / 7;
 	for (int i = 0; i < 5; i++) {
 		polygon rect;
-		rect.add_point(legend_top_left_position.get_x() + 40, legend_top_left_position.get_y() + i * 40 + 50);
-		rect.add_point(legend_top_left_position.get_x() + 80, legend_top_left_position.get_y() + i * 40 + 50);
-		rect.add_point(legend_top_left_position.get_x() + 80, legend_top_left_position.get_y() + (i + 1) * 40 + 50);
-		rect.add_point(legend_top_left_position.get_x() + 40, legend_top_left_position.get_y() + (i + 1) * 40 + 50);
+		rect.add_point(legend_top_left_position.get_x() + 40, legend_top_left_position.get_y() + i * block_size + 50);
+		rect.add_point(legend_top_left_position.get_x() + 40 + block_size, legend_top_left_position.get_y() + i * block_size + 50);
+		rect.add_point(legend_top_left_position.get_x() + 40 + block_size, legend_top_left_position.get_y() + (i + 1) * block_size + 50);
+		rect.add_point(legend_top_left_position.get_x() + 40, legend_top_left_position.get_y() + (i + 1) * block_size + 50);
 		rect.draw_stroke();
 		switch (i) {
 			case 0: rect.draw_fill(1, 1, 0x64A211); break;
@@ -76,10 +77,10 @@ void draw_frame() {
 		}
 	}
 
-	f.set_size(3);
-	f.draw_string("1000M", legend_top_left_position.get_x() + 90, legend_top_left_position.get_y() + 80);
-	f.draw_string("500M", legend_top_left_position.get_x() + 90, legend_top_left_position.get_y() + 120);
-	f.draw_string("100M", legend_top_left_position.get_x() + 90, legend_top_left_position.get_y() + 160);
-	f.draw_string("0M", legend_top_left_position.get_x() + 90, legend_top_left_position.get_y() + 200);
+	f.set_size((legend_height / 10) / 7);
+	f.draw_string("1000M", legend_top_left_position.get_x() + 40 + block_size + margin_default, legend_top_left_position.get_y() + (2 * block_size));
+	f.draw_string("500M", legend_top_left_position.get_x() + 40 + block_size + margin_default, legend_top_left_position.get_y() + (3 * block_size));
+	f.draw_string("100M", legend_top_left_position.get_x() + 40 + block_size + margin_default, legend_top_left_position.get_y() + (4 * block_size));
+	f.draw_string("0M", legend_top_left_position.get_x() + 40 + block_size + margin_default, legend_top_left_position.get_y() + (5 * block_size));
 
 }
