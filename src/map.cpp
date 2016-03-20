@@ -74,10 +74,49 @@ void map::draw_map(){
     kuning.add_point(165*size, 64*size);
     kuning.add_point(165*size, 67*size);
     kuning.add_point(165*size, 67*size);
+
     kuning.add_point(164*size, 68*size);
     kuning.add_point(163*size, 68*size);
     kuning.add_point(159*size, 64*size);
     kuning.add_point(153*size, 64*size);
+    kuning.add_point(149*size, 60*size);
+    kuning.add_point(144*size, 60*size);
+    kuning.add_point(143*size, 61*size);
+    kuning.add_point(142*size, 61*size);
+    kuning.add_point(141*size, 60*size);
+    kuning.add_point(136*size, 60*size);
+
+    kuning.add_point(133*size, 58*size);
+    kuning.add_point(131*size, 58*size);
+    kuning.add_point(132*size, 59*size);
+    kuning.add_point(128*size, 59*size);
+    kuning.add_point(124*size, 55*size);
+    kuning.add_point(122*size, 54*size);
+    kuning.add_point(120*size, 56*size);
+    kuning.add_point(115*size, 56*size);
+    kuning.add_point(113*size, 55*size);
+    kuning.add_point(110*size, 55*size);
+
+    kuning.add_point(107*size, 58*size);
+    kuning.add_point(104*size, 59*size);
+    kuning.add_point(95*size, 59*size);
+    kuning.add_point(93*size, 57*size);
+    kuning.add_point(93*size, 57*size);
+    kuning.add_point(89*size, 60*size);
+    kuning.add_point(85*size, 60*size);
+    kuning.add_point(85*size, 56*size);
+    kuning.add_point(88*size, 53*size);
+    kuning.add_point(88*size, 52*size);
+
+    kuning.add_point(85*size, 52*size);
+    kuning.add_point(82*size, 55*size);
+    kuning.add_point(82*size, 58*size);
+    kuning.add_point(83*size, 59*size);
+    kuning.add_point(82*size, 61*size);
+    kuning.add_point(80*size, 61*size);
+    kuning.add_point(75*size, 59*size);
+    kuning.add_point(75*size, 56*size);
+
 
 
 
