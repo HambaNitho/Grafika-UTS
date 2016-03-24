@@ -43,7 +43,7 @@ int main() {
   view v(screen_height, vertical_split_xres, view_pos, clipping_pos, 0.1);
 
   map m;
-  m.set_scale(2.5);
+  m.set_scale(1);
   m.draw_map(minimap_top_left_x, minimap_top_left_y);
 
   vector<polygon> maps = m.get_map_polygons();
@@ -57,9 +57,35 @@ int main() {
     for (int i = 0; i < maps.size(); i++) {
       maps[i].draw_stroke();
       v.draw(maps[i]);
-      polygons.push_back(maps[i]);
-      colors.push_back(0xDEB946);
+      
     }
+
+    polygons.push_back(maps[8]);
+    polygons.push_back(maps[7]);
+    polygons.push_back(maps[6]);
+    polygons.push_back(maps[5]);
+    polygons.push_back(maps[4]);
+    polygons.push_back(maps[3]);
+    polygons.push_back(maps[2]);
+    polygons.push_back(maps[1]);
+    polygons.push_back(maps[0]);
+
+    colors.push_back(0x64A211);
+    colors.push_back(0xDEB946);
+    colors.push_back(0xDEB946);
+    colors.push_back(0xDEB946);
+    colors.push_back(0xDEB946);
+    colors.push_back(0xDEB946);
+    colors.push_back(0xDEB946);
+    colors.push_back(0xDFE53E);
+    colors.push_back(0x64A211);
+    /*
+    
+    colors.push_back(0xDEB946);
+    colors.push_back(0xDEB946);
+    colors.push_back(0xDEB946);
+    colors.push_back(0xDEB946);
+    colors.push_back(0x64A211);*/
 
     fillo fl(polygons, colors);
     fl.fill_polygons();

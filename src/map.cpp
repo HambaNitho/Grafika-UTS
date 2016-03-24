@@ -58,6 +58,7 @@ void map::draw_map(int x_offset, int y_offset){
     map_add_point("nusapenida", nusapenida, x_offset, y_offset);
     // nusapenida.draw_stroke();
 
+    map_polygons.push_back(bali);
     map_polygons.push_back(kuning);
     map_polygons.push_back(oren1);
     map_polygons.push_back(oren2);
@@ -65,7 +66,6 @@ void map::draw_map(int x_offset, int y_offset){
     map_polygons.push_back(oren4);
     map_polygons.push_back(oren5);
     map_polygons.push_back(oren6);
-    map_polygons.push_back(bali);
     map_polygons.push_back(nusapenida);
 
 

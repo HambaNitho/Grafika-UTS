@@ -16,14 +16,14 @@ void fillo::fill_polygons() {
 	int h_res = canvas::get_instance()->get_var_info().xres;
 
 	for (int y = 0; y < v_res; y++) {
-		//printf("y = %d\n",y);
+		
 		i = polygons.begin(); color = colors.begin();
-		int j=0;
+		
 		free_space.push_back(point(0,h_res));
 		while ( (i != polygons.end()) && (!free_space.empty()) ) { // allocate colors of every visible polygons
-			//printf("i = %d\n",j);
+			
 			allocate_polygon(*i, *color, y);
-			i++; color++; j++;
+			i++; color++;
 		}
 		free_space.clear();
 	}

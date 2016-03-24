@@ -154,12 +154,45 @@ std::vector<int> polygon::scanline(int y) {
 			} 		
 		}
 		else if (i == ymin && i == ymax) {
-			intersect.push_back(points[j].get_x());
+			if (points[j].get_x() > points[(j-1) % points.size()].get_x() && points[j].get_y() == points[(j-1) % points.size()].get_y()) {
+				if (points[(j-2) % points.size()].get_y() < points[(j-1) % points.size()].get_y() && points[(j+1) % points.size()].get_y() < points[j].get_y()) {
+					intersect.push_back(points[j].get_x());
+				}
+				else if (points[(j-2) % points.size()].get_y() > points[(j-1) % points.size()].get_y() && points[(j+1) % points.size()].get_y() > points[j].get_y()) {
+					intersect.push_back(points[j].get_x());
+				}
+			}
+			else if (points[j].get_x() < points[(j+1) % points.size()].get_x() && points[j].get_y() == points[(j+1) % points.size()].get_y()) {
+				if (points[(j-1) % points.size()].get_y() < points[j].get_y() && points[(j+2) % points.size()].get_y() < points[(j+1) % points.size()].get_y()) {
+					intersect.push_back(points[j].get_x());
+				}
+				else if (points[(j-1) % points.size()].get_y() > points[j].get_y() && points[(j+2) % points.size()].get_y() > points[(j+1) % points.size()].get_y()) {
+					intersect.push_back(points[j].get_x());
+				}
+			}
+
+			else if (points[j].get_x() > points[(j+1) % points.size()].get_x() && points[j].get_y() == points[(j+1) % points.size()].get_y()) {
+				if (points[(j-1) % points.size()].get_y() < points[j].get_y() && points[(j+2) % points.size()].get_y() < points[(j+1) % points.size()].get_y()) {
+					intersect.push_back(points[j].get_x());
+				}
+				else if (points[(j-1) % points.size()].get_y() > points[j].get_y() && points[(j+2) % points.size()].get_y() > points[(j+1) % points.size()].get_y()) {
+					intersect.push_back(points[j].get_x());
+				}
+			}
+			
+			else {
+				if (points[(j-1) % points.size()].get_y() < points[j].get_y() && points[(j+2) % points.size()].get_y() < points[(j+1) % points.size()].get_y()) {
+					intersect.push_back(points[j].get_x());
+				}
+				else if (points[(j-1) % points.size()].get_y() > points[j].get_y() && points[(j+2) % points.size()].get_y() > points[(j+1) % points.size()].get_y()) {
+					intersect.push_back(points[j].get_x());
+				}
+			}
 		}
 		else if (i == ymin) {
 
 			if (i == points[j].get_y()) {
-				if (points[j-1].get_y() <= i) intersect.push_back(points[j].get_x());
+				if (points[(j-1) % points.size()].get_y() <= i) intersect.push_back(points[j].get_x());
 			}
 			// else {
 			// 	if (points[j+2].get_y() < i) intersect.push_back(points[j+1].get_x());
@@ -169,7 +202,7 @@ std::vector<int> polygon::scanline(int y) {
 		else if (i == ymax) {
 
 			if (i == points[j].get_y()) {
-				if (points[j-1].get_y() >= i) intersect.push_back(points[j].get_x());
+				if (points[(j-1) % points.size()].get_y() >= i) intersect.push_back(points[j].get_x());
 			}
 			/*else {
 				if (points[j+2].get_y() > i) intersect.push_back(points[j+1].get_x());
@@ -178,7 +211,7 @@ std::vector<int> polygon::scanline(int y) {
 		}
 	}
 
-	sort(intersect.begin(), intersect.end()); 
+	sort(intersect.begin(), intersect.end());
 
 	return intersect;
 			
