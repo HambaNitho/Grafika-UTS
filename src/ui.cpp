@@ -18,7 +18,7 @@ int margin_default = 10;
 // Minimap
 int minimap_top_left_x = vertical_split_xres + margin_default;
 int minimap_top_left_y = (10 * margin_default);
-int minimap_height = screen_height / 3;
+int minimap_height = screen_height / 3.5;
 
 // Instruction
 int instruction_top_left_x = vertical_split_xres + (10 * margin_default);
@@ -48,47 +48,41 @@ int main() {
 
   vector<polygon> maps = m.get_map_polygons();
 
+  std::list<polygon> polygons;
+  std::list<uint32_t> colors;
+
+  polygons.push_back(maps[8]);
+  polygons.push_back(maps[7]);
+  polygons.push_back(maps[6]);
+  polygons.push_back(maps[5]);
+  polygons.push_back(maps[4]);
+  polygons.push_back(maps[3]);
+  polygons.push_back(maps[2]);
+  polygons.push_back(maps[1]);
+  polygons.push_back(maps[0]);
+
+  colors.push_back(0x64A211);
+  colors.push_back(0xDEB946);
+  colors.push_back(0xDEB946);
+  colors.push_back(0xDEB946);
+  colors.push_back(0xDEB946);
+  colors.push_back(0xDEB946);
+  colors.push_back(0xDEB946);
+  colors.push_back(0xDFE53E);
+  colors.push_back(0x64A211);
+
+
+  fillo fl(polygons, colors);
+
   while (true) {
     draw_frame();
 
-    std::list<polygon> polygons;
-    std::list<uint32_t> colors;
-
+    fl.fill_polygons();
     for (int i = 0; i < maps.size(); i++) {
-      maps[i].draw_stroke();
+      // maps[i].draw_stroke();
       v.draw(maps[i]);
       
     }
-
-    polygons.push_back(maps[8]);
-    polygons.push_back(maps[7]);
-    polygons.push_back(maps[6]);
-    polygons.push_back(maps[5]);
-    polygons.push_back(maps[4]);
-    polygons.push_back(maps[3]);
-    polygons.push_back(maps[2]);
-    polygons.push_back(maps[1]);
-    polygons.push_back(maps[0]);
-
-    colors.push_back(0x64A211);
-    colors.push_back(0xDEB946);
-    colors.push_back(0xDEB946);
-    colors.push_back(0xDEB946);
-    colors.push_back(0xDEB946);
-    colors.push_back(0xDEB946);
-    colors.push_back(0xDEB946);
-    colors.push_back(0xDFE53E);
-    colors.push_back(0x64A211);
-    /*
-    
-    colors.push_back(0xDEB946);
-    colors.push_back(0xDEB946);
-    colors.push_back(0xDEB946);
-    colors.push_back(0xDEB946);
-    colors.push_back(0x64A211);*/
-
-    fillo fl(polygons, colors);
-    fl.fill_polygons();
 
     canvas::get_instance()->render();
 
@@ -170,7 +164,7 @@ void draw_frame() {
   arrow.rotate(3.14 / 2);
   arrow.draw_stroke(instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (3 * (minimap_height / 16)) + (4 * margin_default));
 
-  f.set_size((minimap_height / 16) / 7);
+  f.set_size((minimap_height / 15) / 7);
   f.draw_string("SCROLL UP", instruction_top_left_x, instruction_top_left_y);
   f.draw_string("SCROLL DOWN", instruction_top_left_x, instruction_top_left_y + (minimap_height / 16) + margin_default);
   f.draw_string("SCROLL RIGHT", instruction_top_left_x, instruction_top_left_y +  (2 * (minimap_height / 16)) + (2 * margin_default));
@@ -179,10 +173,10 @@ void draw_frame() {
   f.draw_string("ZOOM IN", instruction_top_left_x, instruction_top_left_y + (4 * (minimap_height / 16)) + (4 * margin_default));
   f.draw_char('M', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (5 * (minimap_height / 16)) + (5 * margin_default));
   f.draw_string("ZOOM OUT", instruction_top_left_x, instruction_top_left_y + (5 * (minimap_height / 16)) + (5 * margin_default));
-  f.draw_char('J', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (6 * (minimap_height / 16)) + (6 * margin_default));
-  f.draw_string("ROTATE LEFT", instruction_top_left_x, instruction_top_left_y + (6 * (minimap_height / 16)) + (6 * margin_default));
-  f.draw_char('K', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (7 * (minimap_height / 16)) + (7 * margin_default));
-  f.draw_string("ROTATE RIGHT", instruction_top_left_x, instruction_top_left_y + (7 * (minimap_height / 16)) + (7 * margin_default));
+  // f.draw_char('J', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (6 * (minimap_height / 16)) + (6 * margin_default));
+  // f.draw_string("ROTATE LEFT", instruction_top_left_x, instruction_top_left_y + (6 * (minimap_height / 16)) + (6 * margin_default));
+  // f.draw_char('K', instruction_top_left_x - (3 * margin_default), instruction_top_left_y + (7 * (minimap_height / 16)) + (7 * margin_default));
+  // f.draw_string("ROTATE RIGHT", instruction_top_left_x, instruction_top_left_y + (7 * (minimap_height / 16)) + (7 * margin_default));
 
 
   polygon legend_frame;
